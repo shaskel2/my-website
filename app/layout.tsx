@@ -1,13 +1,22 @@
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Inter, Calistoga } from "next/font/google"
 import "./globals.css"
 
-const geistSans = Geist({ subsets: ["latin"] })
-const geistMono = Geist_Mono({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const calistoga = Calistoga({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-calistoga",
+})
 
 export const metadata: Metadata = {
-  title: "My Website",
-  description: "Welcome to my website",
+  title: "Sarah Johnson | Web Developer & Designer",
+  description:
+    "I create beautiful, functional websites that help businesses grow. Web developer and designer portfolio.",
+}
+
+export const viewport: Viewport = {
+  themeColor: "#2a9d8f",
 }
 
 export default function RootLayout({
@@ -16,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${calistoga.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )

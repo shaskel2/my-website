@@ -1,12 +1,23 @@
+import { Navbar } from "@/components/navbar"
+import { Hero } from "@/components/hero"
+import { About } from "@/components/about"
+import { Projects } from "@/components/projects"
+import { Skills } from "@/components/skills"
+import { Contact } from "@/components/contact"
+import { Footer } from "@/components/footer"
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold tracking-tight text-foreground">
-        Welcome to My Website
-      </h1>
-      <p className="mt-4 text-lg text-muted-foreground">
-        Get started by editing this page.
-      </p>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   )
 }
