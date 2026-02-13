@@ -1,4 +1,3 @@
--- Create feedback table for anonymous feedback submissions
 CREATE TABLE IF NOT EXISTS public.feedback (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name TEXT NOT NULL,
@@ -7,16 +6,10 @@ CREATE TABLE IF NOT EXISTS public.feedback (
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Enable Row Level Security
 ALTER TABLE public.feedback ENABLE ROW LEVEL SECURITY;
 
--- Allow anyone to read feedback
-CREATE POLICY "feedback_select_all" ON public.feedback
-  FOR SELECT USING (true);
+DROP POLICY IF EXISTS "feedback_select_all" ON public.feedback;
+CREATE POLICY "feedback_select_all" ON public.feedback FOR SELECT USING (true);
 
--- Allow anyone to insert feedback (anonymous submissions)
-CREATE POLICY "feedback_insert_all" ON public.feedback
-  FOR INSERT WITH CHECK (true);
-
--- Enable realtime for the feedback table
-ALTER PUBLICATION supabase_realtime ADD TABLE public.feedback;
+DROP POLICY IF EXISTS "feedback_insert_all" ON public.feedback;
+CREATE POLICY "feedback_insert_all" ON public.feedback FOR INSERT WITH CHECK (true);
