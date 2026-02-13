@@ -46,6 +46,7 @@ export function Hero() {
               src="/hero-portrait.jpg"
               alt="Sarah Johnson portrait"
               fill
+              sizes="(max-width: 768px) 256px, 320px"
               className="object-cover"
               priority
             />
